@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirigiendo...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #003366;
+        }
+    </style>
+    <script>
+        function abrirEnlace() {
+            // Obtener el parámetro "form" de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const formId = urlParams.get('form') || '1'; // Por defecto, usa el formulario 1 si no hay parámetro
+
+            // Definir los enlaces de MediaFire según el formulario
+            const mediaFireLinks = {
+                '1': 'https://www.mediafire.com/folder/jlehq3auaz4mq/Anytitle', // ANYTITLE
+                '2': 'https://www.mediafire.com/folder/5bhngj8aqjime/Bloquear+Actualizaciones+de+Juegos', // BLOCK ACT
+                '3': 'https://www.mediafire.com/folder/dv3y1mywbn2h3/CFG-Loader', // CFG-LOADER
+                '4': 'https://www.mediafire.com/folder/2d6pjwixys12f/CIOS', // CIOS + ELIMINAR MODMII                
+                '5': 'https://www.mediafire.com/folder/fqcrc37ixp8y8/Desmumewii', // DESMENU
+                '6': 'https://www.mediafire.com/folder/867fxol6tyhhy/Convertir+DOL+a+BIN+y+ELF', // DOL A ELF
+                '7': 'https://www.mediafire.com/folder/hgw84k6laxavr/Convertir+DVD+a+ISO', // DVD A ISO            
+                '8': 'https://www.mediafire.com/folder/7u3b2luagtnwg/WII+WIIBRAND', // HACK WII [wiibrand]
+                '9': 'https://www.mediafire.com/folder/jfpo4q4fwqluk/HackMii', // HACKMII
+                '10': 'https://www.mediafire.com/folder/b0cbhaohir8dc/Convertir+ISO+A+WBFS', // ISO A WBFS
+                '11': 'https://www.mediafire.com/folder/lfiu075uyteqo/mGBA', // MGBA              
+                '12': 'https://www.mediafire.com/folder/eg7qv1wd5u09k/Nintendont', // NINTENDONT
+                '13': 'https://www.mediafire.com/folder/9urfytbrtepsy/Not64', // NOT64
+                '14': 'https://www.mediafire.com/folder/xi7zy3t8hkl4c/Online', // ONLINE WII
+                '15': 'https://www.mediafire.com/folder/qym3tf9fs2zum/Priiloader', // PRIILOADER               
+                '16': 'https://www.mediafire.com/folder/8l2saq2mbw2di/Cambiar+Archivo+a+Región+Libre', // REGION FRII
+                '17': 'https://www.mediafire.com/folder/6z0ctrxwv4l7q/Retroarch', // RETROARCH
+                '18': 'https://www.mediafire.com/folder/jzu9jtimupx90/SysckeckMe', // SYSCHECK
+                '19': 'https://www.mediafire.com/folder/xcewwn4tdy6ig/Trimear+Capacidad+Archivo+DOL', // TRIMEAR DOL             
+                '20': 'https://www.mediafire.com/folder/1vc3xdb7ejqws/USBLoader-GX', // USBLOADER-GX WII 
+                '21': 'https://www.mediafire.com/folder/ygeigdgb7qj1m/WiiFlow', // WIIFLOW WII 
+                '22': 'https://www.mediafire.com/folder/c852w0u98697b/WiiStation', // WIISTATION
+                '23': 'https://www.mediafire.com/folder/535rtpt3hqiej/Yawm', // YAWM               
+                '24': 'https://www.mediafire.com/folder/v8ri4br41i89i/WII+MINI+BLUEBOMB', // HACK WII MINI
+                '25': 'https://www.mediafire.com/folder/dezv235ha2gfu/WIIU+CFW-DUAL', // HACK WII U
+                '26': 'https://www.mediafire.com/folder/afovkrhu9wa0k/vWII+COMPAT', // HACK vWII
+                '27': 'https://www.mediafire.com/folder/4z1rto7ytsk7w/NAND', // ELIMINAR HACK vWII y NAND
+                '28': 'https://www.mediafire.com/folder/fj8lvekydx5ip/Eliminar+Mocha', // ELIMINAR MOCHA  
+                '29': 'https://www.mediafire.com/folder/b9h1awh4yk1mb/Pack+Arranque', // ELIMINAR TIRAMISU = Pack Wii U
+                '30': 'https://www.mediafire.com/folder/to458ox1hzgpt/FTP', // FTP WII U  
+                '31': 'https://www.mediafire.com/folder/g5ttliqzz20sh/WupInstaller', // HBC WII U y WUP 
+                '32': 'https://www.mediafire.com/folder/2ij528g6obtzn/Online', // ONLINE WII U  
+                '33': 'https://www.mediafire.com/folder/b9h1awh4yk1mb/Pack+Arranque', // PACK ARRANQUE WII U
+                '34': 'https://www.mediafire.com/folder/eljwx0sxxxa2e/TECONMOON', // TECOMOON
+                '100': '' // Empty
+            };
+
+            // Seleccionar el enlace de MediaFire según el formulario
+            const mediaFireUrl = mediaFireLinks[formId] || mediaFireLinks['1'];
+
+            // Abrir la pestaña de MediaFire
+            let mediaFireWindow = null;
+
+            try {
+                mediaFireWindow = window.open(mediaFireUrl, '_blank');
+
+                // Verificar si la pestaña se abrió después de un retraso
+                setTimeout(function() {
+                    // Verificar si la pestaña se abrió (si es null o está cerrada, el bloqueador impidió la apertura)
+                    if (!mediaFireWindow || mediaFireWindow.closed) {
+                        document.body.innerHTML = `
+                            <p></p>
+                            <p>No se pudo abrir automáticamente. Haz clic <a href="${mediaFireUrl}" target="_blank">aquí</a> para abrir manualmente.</p>
+                            <p></p>
+                        `;
+                    } else {
+                        document.body.innerHTML = "<p>Redirección completa. Por favor, cierra esta pestaña manualmente.</p>";
+                    }
+                }, 1000); // Retraso de 1 segundo para mayor compatibilidad
+            } catch (e) {
+                console.error('Error al abrir la ventana de MediaFire:', e);
+                document.body.innerHTML = `
+                    <p></p>
+                    <p> No se pudo abrir automáticamente. Haz clic <a href="${mediaFireUrl}" target="_blank">aquí</a> para abrir manualmente.</p>
+                    <p></p>
+                `;
+            }
+        }
+
+        // Ejecutar al cargar la página
+        window.onload = abrirEnlace;
+    </script>
+</head>
+<body>
+    <p>Redirigiendo... Si la pestaña no se abre, desactiva el bloqueador de pop-ups o haz clic en el enlace que aparecerá.</p>
+</body>
+</html>
